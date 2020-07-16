@@ -3,27 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Test</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/skeleton.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+    <title>Practice Skeleton</title>
 </head>
 
 <body>
-    <form id="user-form" class="card-body">
-        <input name="city" id="city" type="text" autofocus="true" class="form-input" />
-        <button id="newsBtn">Get the News Data</button>
-    </form>
-    <br>
+    <div class="container">
+        <div class="row">
+            <div class="twelve columns" style="background: lightblue;">
+                <h1 class="center" style="margin-top: 10px;">News by the Map</h1>
+                <p class="center">Type in a location or drop a pin on the map to find recent news about the area.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                <form id="user-form" class="searchForm">
+                    <input name="city" id="city" type="text" autofocus="true" placeholder="Type in City Name" class="form-input u-full-width" />
+                    <label for="topic">Optional: Choose a News Topic and/or a range</label>
+                    <select name="topic" id="topic" style="width: 40%;">
+                        <option value="">-None-</option>
+                        <option value="education">Education</option>
+                        <option value="sports">Sports</option>
+                        <option value="business">Business</option>
+                        <option value="politics">Politics</option>
+                    </select>
+                    <select name="range" id="range" style="width: 40%;">
+                        <option value="">-None-</option>
+                        <option value="10">10 miles</option>
+                        <option value="50">50 miles</option>
+                        <option value="100">100 miles</option>
+                        <option value="150">150 miles</option>
+                    </select>
+                    <button type="submit" id="searchBtn" class="u-full-width">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                <div id="map" style="border: solid; height: 300px;">This is where the map will go!</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                <h2 style="margin-top: 10px;" class="center">News</h2>
+            </div>
+        </div>
+
+        <div class="row" style="border: solid; height: 150px; margin-bottom: 20px; background-color: darkgray;">
+            <div class="four columns">
+                <div id="newsCard" >
+                    <img src="https://via.placeholder.com/150" />
+                </div>
+            </div>
+            <div class="eight columns">
+                <div id="newsCard">
+                    <h4 class="u-pull-right">This will be the heading of the news article.</h4> 
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="border: solid; height: 150px; margin-bottom: 20px; background-color: darkgray;">
+            <div class="four columns">
+                <div id="newsCard" >
+                    <img src="https://via.placeholder.com/150" />
+                </div>
+            </div>
+            <div class="eight columns">
+                <div id="newsCard">
+                    <h4 class="u-pull-right">This will be the heading of the news article.</h4> 
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="border: solid; height: 150px; margin-bottom: 20px; background-color: darkgray;">
+            <div class="four columns">
+                <div id="newsCard" >
+                    <img src="https://via.placeholder.com/150" />
+                </div>
+            </div>
+            <div class="eight columns">
+                <div id="newsCard">
+                    <h4 class="u-pull-right">This will be the heading of the news article.</h4> 
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="border: solid; height: 150px; margin-bottom: 20px; background-color: darkgray;">
+            <div class="four columns">
+                <div id="newsCard" >
+                    <img src="https://via.placeholder.com/150" />
+                </div>
+            </div>
+            <div class="eight columns">
+                <div id="newsCard">
+                    <h4 class="u-pull-right">This will be the heading of the news article.</h4> 
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
     
-    <div id="cityNameTitle">City Name</div>
-    <br>
-    <div id="newsTitle">Title of Article</div>
-    <br>
-    <div id="newsDescrip">Discription of Article</div>
-    <br>
-    <div id="newsURL">URL of Article</div>
-    <br>
-    <img id="newsImg"/>
-
-
-    <script src="./script.js"></script>
 </body>
 </html>
