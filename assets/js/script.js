@@ -1,7 +1,7 @@
 var cityName = document.querySelector("#city");
 var searchBtn = document.querySelector("#searchBtn");
 
-var citySearch = function() {
+var citySearch = function () {
     event.preventDefault();
     var city = cityName.value.trim();
 
@@ -15,15 +15,15 @@ var citySearch = function() {
     }
 };
 
-var getData = function(city) {
+var getData = function (city) {
 
     // format the url
     var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613";
 
-    fetch(apiUrl).then(function(response) {
+    fetch(apiUrl).then(function (response) {
         if (response.ok) {
             // send the parsed JSON data to displayNewsData() function
-            response.json().then(function(data) {
+            response.json().then(function (data) {
                 displayNewsData(data, city);
             });
         } else {
@@ -33,7 +33,7 @@ var getData = function(city) {
 };
 
 // function to display information to page
-var displayNewsData = function(data, city) {
+var displayNewsData = function (data, city) {
     // console logs the first articles json data
     console.log(data.articles[0]);
     // console log information
@@ -43,6 +43,20 @@ var displayNewsData = function(data, city) {
     console.log(data.articles[0].url);
     console.log(data.articles[0].image);
 };
+
+// function map set
+function initMap() {
+    var options = {
+        zoom: 10,
+        center: { lat: 36.1627, lng: -86.7816 },
+    }
+
+
+    var map = new
+        google.maps.Map(document.getElementById("map"), options);
+
+
+}
 
 searchBtn.addEventListener("click", citySearch);
 
