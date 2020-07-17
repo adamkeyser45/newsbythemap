@@ -70,8 +70,8 @@ var displayNewsData = function (data, city) {
     nameOfCityHtml.innerHTML = "News From: " + nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
     dataUrlHtml.setAttribute("href", dataUrl);
-    dataUrlHtml.innerHTML = dataUrl;
-    dataImageHtml.setAttribute('src', dataImage)
+    dataUrlHtml.innerHTML = "Click Here to Read More";
+    dataImageHtml.setAttribute('src', dataImage);
 };
 
 
