@@ -30,7 +30,7 @@ var citySearch = function () {
 var getData = function (city) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613&image=required";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -49,7 +49,7 @@ var getData = function (city) {
 // function to display information to page
 var displayNewsData = function (data, city) {
     // console logs the first articles json data
-    console.log(data.articles[0]);
+    console.log(data.articles);
     // console log information
     // console.log(city);
     // console.log(data.articles[0].title);
@@ -62,13 +62,14 @@ var displayNewsData = function (data, city) {
     const dataUrl = data.articles[0].url;
     const dataImage = data.articles[0].image;
 
-    var nameOfCityHtml = document.querySelector("#name");
+    var nameOfCityHtml = document.querySelector("#newsCityTitle");
     var dataArticleHtml = document.querySelector("#title");
     var dataUrlHtml = document.querySelector("#url");
     var dataImageHtml = document.querySelector("#image");
 
-    nameOfCityHtml.innerHTML = nameOfCity;
+    nameOfCityHtml.innerHTML = "News From: " + nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
+    dataUrlHtml.setAttribute("href", dataUrl);
     dataUrlHtml.innerHTML = dataUrl;
     dataImageHtml.setAttribute('src', dataImage)
 };
