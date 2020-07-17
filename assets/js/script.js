@@ -1,6 +1,4 @@
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
-var cityName = document.querySelector("#city");
-var searchBtn = document.querySelector("#searchBtn");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
 
@@ -61,19 +59,16 @@ var displayNewsData = function (data, city) {
 
     const nameOfCity = city;
     const dataArticle = data.articles[0].title;
-    const dataDescription = data.articles[0].description;
     const dataUrl = data.articles[0].url;
     const dataImage = data.articles[0].image;
 
     var nameOfCityHtml = document.querySelector("#name");
     var dataArticleHtml = document.querySelector("#title");
-    var dataDescriptionHtml = document.querySelector("#description");
     var dataUrlHtml = document.querySelector("#url");
     var dataImageHtml = document.querySelector("#image");
 
     nameOfCityHtml.innerHTML = nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
-    dataDescriptionHtml.innerHTML = dataDescription;
     dataUrlHtml.innerHTML = dataUrl;
     dataImageHtml.setAttribute('src', dataImage)
 };
@@ -82,7 +77,7 @@ var displayNewsData = function (data, city) {
 // function map set
 function initMap() {
     var map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -33.8688, lng: 151.2195 },
+      center: {  lat: 36.1627, lng: -86.7816 },
       zoom: 13
     });
   
@@ -126,8 +121,6 @@ function initMap() {
   
       marker.setVisible(true);
 
-    console.log(place);
+    getData(place.name);
     });
 }
-
-searchBtn.addEventListener("click", citySearch);
