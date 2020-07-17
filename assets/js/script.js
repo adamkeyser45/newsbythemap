@@ -11,7 +11,7 @@ var citySearch = function () {
         getData(city);
         cityName.value = "";
     } else {
-        alert("Please enter and ACTUAL city name.");
+        alert("Please enter an ACTUAL city name.");
     }
 };
 
@@ -59,7 +59,7 @@ var displayNewsData = function (data, city) {
     dataArticleHtml.innerHTML = dataArticle;
     dataDescriptionHtml.innerHTML = dataDescription;
     dataUrlHtml.innerHTML = dataUrl;
-    dataImageHtml.innerHTML = dataImage;
+    dataImageHtml.setAttribute('src', dataImage)
 };
 
 
