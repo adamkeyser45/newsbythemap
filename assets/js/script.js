@@ -53,11 +53,11 @@ var displayNewsData = function (data, city) {
     // console logs the first articles json data
     console.log(data.articles[0]);
     // console log information
-    console.log(city);
-    console.log(data.articles[0].title);
-    console.log(data.articles[0].description);
-    console.log(data.articles[0].url);
-    console.log(data.articles[0].image);
+    // console.log(city);
+    // console.log(data.articles[0].title);
+    // console.log(data.articles[0].description);
+    // console.log(data.articles[0].url);
+    // console.log(data.articles[0].image);
 
     const nameOfCity = city;
     const dataArticle = data.articles[0].title;
@@ -79,20 +79,55 @@ var displayNewsData = function (data, city) {
 };
 
 
-
 // function map set
 function initMap() {
-    var options = {
-        zoom: 10,
-        center: { lat: 36.1627, lng: -86.7816 },
-    }
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -33.8688, lng: 151.2195 },
+      zoom: 13
+    });
+  
+    var input = document.getElementById("pac-input");
+  
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo("bounds", map);
+  
+    // Specify just the place data fields that you need.
+    autocomplete.setFields(["place_id", "geometry", "name"]);
+  
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  
+    var infowindow = new google.maps.InfoWindow();
+    var infowindowContent = document.getElementById("infowindow-content");
+    infowindow.setContent(infowindowContent);
+  
+    var marker = new google.maps.Marker({ map: map });
+  
+    autocomplete.addListener("place_changed", function() {
+      infowindow.close();
+  
+      var place = autocomplete.getPlace();
+  
+      if (!place.geometry) {
+        return;
+      }
+  
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+  
+      // Set the position of the marker using the place ID and location.
+      marker.setPlace({
+        placeId: place.place_id,
+        location: place.geometry.location
+      });
+  
+      marker.setVisible(true);
 
-
-    var map = new
-        google.maps.Map(document.getElementById("map"), options);
-
-
+    console.log(place);
+    });
 }
 
 searchBtn.addEventListener("click", citySearch);
-
