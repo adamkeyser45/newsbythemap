@@ -57,6 +57,8 @@ var displayNewsData = function (data, city) {
     // console.log(data.articles[0].url);
     // console.log(data.articles[0].image);
 
+// for (var = i; i < 3; i++) {}
+
     const nameOfCity = city;
     const dataArticle = data.articles[0].title;
     const dataUrl = data.articles[0].url;
