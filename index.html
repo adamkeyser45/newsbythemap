@@ -22,7 +22,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/images/favicon.png">
-    <title>Practice Skeleton</title>
+    <title>News By the Map</title>
 </head>
 
 <body>
@@ -38,13 +38,12 @@
         <div class = "columns">
             <div class=" column is-full center">
                 <form id="user-form" class="searchForm">
-                    <h2 class="searchDirect">type in a location or drop a pin on the map to find recent news about the area</h2> 
-                    <input name="city" id="city" type="text" autofocus="true" placeholder="type in city name" class="form-input input is-medium" />
+                    <h2 class="searchDirect">Type in a location into the map search box to find recent news about the area.</h2> 
 
                     <div class="dropdown column">
                             <div class="dropdown-trigger">
                               <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                <span>topic</span>
+                                <span>Topic</span>
                                 <span class="icon is-small">
                                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                                 </span>
@@ -53,90 +52,67 @@
                             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
                               <div class="dropdown-content">
                                 <a href="#" class="dropdown-item">
-                                    none
+                                    None
                                    </a>
                                 <a href="#" class="dropdown-item">
-                                    education
+                                    World
                                    </a>
                                 <a href="#" class="dropdown-item">
-                                   sports
+                                    Nation
                                   </a>
                                 <a href="#" class="dropdown-item">
-                                    business
+                                    Business
                                   </a>
                                 <a href="#" class="dropdown-item">
-                                  politics
+                                    Technology
                                 </a>
+                                <!--Other Topic Options: entertainment, sports, science, health-->
                               </div>
                             </div>
                         </div>
-                        <div class="dropdown column">
-                            <div class="dropdown-trigger">
-                              <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                <span>range</span>
-                                <span class="icon is-small">
-                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                              </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                              <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    10 miles
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                   50 miles
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                  100 miles
-                                  </a>
-                                <a href="#" class="dropdown-item">
-                                   150 miles
-                                  </a>
-                              </div>
-                            </div>
-                        </div>
-                        
-                    
 
-                    <!-- <select name="range" id="range" style="width: 40%;">
-                        <option value="">-None-</option>
-                        <option value="10">10 miles</option>
-                        <option value="50">50 miles</option>
-                        <option value="100">100 miles</option>
-                        <option value="150">150 miles</option>
-                    </select> -->
-                    <button type="submit" id="searchBtn" class="button is-medium">search</button>
+                        <!--Add in a search bar to add a keyword to the news search-->
+
+
+                        
                 </form>
             </div>
         </div>
 
-        <div class="columns">
-            <div class="column">
-                <div id="map" style="border: solid 1px gray; height: 300px;"></div>
+        
+            <div style="display: none">
+                <input
+                  id="pac-input"
+                  class="controls"
+                  type="text"
+                  placeholder="Enter a location"
+                />
+              </div>
+              <div id="map"></div>
+              <div id="infowindow-content">
+                <span id="place-name" class="title"></span><br />
+                <strong>Place ID:</strong> <span id="place-id"></span><br />
+                <span id="place-address"></span>
             </div>
-        </div>
+        
 
         <div class="columns">
             <div class="column">
-                <h2 style="margin-top: 10px;" class="center subtitle is-2">news</h2>
+                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center subtitle is-2">News</h2>
             </div>
         </div>
 
-        <div class="columns" style="border: solid 1px gray; height: 150px; margin-bottom: 20px;">
+        <div class="columns" style="margin-bottom: 20px;">
             <div class="tile">
                 <div id="newsCard" >
-                    <img id="image" src="https://via.placeholder.com/150" />
+                    <img id="image" src="" />
                 </div>
             </div>
             <div class="tile">
                 <div id="newsCard">
 
                     <h5 class="u-pull-right" id="title"></h5> 
-                    <p id="name"></p>
-                    <p id="description"></p>
-                    <p id="url"></p>
-                    <!-- <p id="image"></p> -->
+                    <a href="" id="url" target="_blank"></a>
                     <h4 class="subtitle is-5"></h4> 
                 </div>
             </div>
@@ -164,9 +140,11 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAY0LxkZdOLQZdYZrJ2OWH6QVxrII3GNc&callback=initMap">
-    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAY0LxkZdOLQZdYZrJ2OWH6QVxrII3GNc&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

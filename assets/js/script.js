@@ -1,6 +1,4 @@
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
-var cityName = document.querySelector("#city");
-var searchBtn = document.querySelector("#searchBtn");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
 
@@ -32,7 +30,7 @@ var citySearch = function () {
 var getData = function (city) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613&image=required";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -51,48 +49,81 @@ var getData = function (city) {
 // function to display information to page
 var displayNewsData = function (data, city) {
     // console logs the first articles json data
-    console.log(data.articles[0]);
+    console.log(data.articles);
     // console log information
-    console.log(city);
-    console.log(data.articles[0].title);
-    console.log(data.articles[0].description);
-    console.log(data.articles[0].url);
-    console.log(data.articles[0].image);
+    // console.log(city);
+    // console.log(data.articles[0].title);
+    // console.log(data.articles[0].description);
+    // console.log(data.articles[0].url);
+    // console.log(data.articles[0].image);
+
+// for (var = i; i < 3; i++) {}
 
     const nameOfCity = city;
     const dataArticle = data.articles[0].title;
-    const dataDescription = data.articles[0].description;
     const dataUrl = data.articles[0].url;
     const dataImage = data.articles[0].image;
 
-    var nameOfCityHtml = document.querySelector("#name");
+    var nameOfCityHtml = document.querySelector("#newsCityTitle");
     var dataArticleHtml = document.querySelector("#title");
-    var dataDescriptionHtml = document.querySelector("#description");
     var dataUrlHtml = document.querySelector("#url");
     var dataImageHtml = document.querySelector("#image");
 
-    nameOfCityHtml.innerHTML = nameOfCity;
+    nameOfCityHtml.innerHTML = "News From: " + nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
-    dataDescriptionHtml.innerHTML = dataDescription;
-    dataUrlHtml.innerHTML = dataUrl;
-    dataImageHtml.setAttribute('src', dataImage)
+    dataUrlHtml.setAttribute("href", dataUrl);
+    dataUrlHtml.innerHTML = "Click Here to Read More";
+    dataImageHtml.setAttribute('src', dataImage);
 };
-
 
 
 // function map set
 function initMap() {
-    var options = {
-        zoom: 10,
-        center: { lat: 36.1627, lng: -86.7816 },
-    }
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: {  lat: 36.1627, lng: -86.7816 },
+      zoom: 13
+    });
+  
+    var input = document.getElementById("pac-input");
+  
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo("bounds", map);
+  
+    // Specify just the place data fields that you need.
+    autocomplete.setFields(["place_id", "geometry", "name"]);
+  
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  
+    var infowindow = new google.maps.InfoWindow();
+    var infowindowContent = document.getElementById("infowindow-content");
+    infowindow.setContent(infowindowContent);
+  
+    var marker = new google.maps.Marker({ map: map });
+  
+    autocomplete.addListener("place_changed", function() {
+      infowindow.close();
+  
+      var place = autocomplete.getPlace();
+  
+      if (!place.geometry) {
+        return;
+      }
+  
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+  
+      // Set the position of the marker using the place ID and location.
+      marker.setPlace({
+        placeId: place.place_id,
+        location: place.geometry.location
+      });
+  
+      marker.setVisible(true);
 
-
-    var map = new
-        google.maps.Map(document.getElementById("map"), options);
-
-
+    getData(place.name);
+    });
 }
-
-searchBtn.addEventListener("click", citySearch);
-
