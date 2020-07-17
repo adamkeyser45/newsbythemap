@@ -58,7 +58,27 @@ var displayNewsData = function (data, city) {
     console.log(data.articles[0].description);
     console.log(data.articles[0].url);
     console.log(data.articles[0].image);
+
+    const nameOfCity = city;
+    const dataArticle = data.articles[0].title;
+    const dataDescription = data.articles[0].description;
+    const dataUrl = data.articles[0].url;
+    const dataImage = data.articles[0].image;
+
+    var nameOfCityHtml = document.querySelector("#name");
+    var dataArticleHtml = document.querySelector("#title");
+    var dataDescriptionHtml = document.querySelector("#description");
+    var dataUrlHtml = document.querySelector("#url");
+    var dataImageHtml = document.querySelector("#image");
+
+    nameOfCityHtml.innerHTML = nameOfCity;
+    dataArticleHtml.innerHTML = dataArticle;
+    dataDescriptionHtml.innerHTML = dataDescription;
+    dataUrlHtml.innerHTML = dataUrl;
+    dataImageHtml.setAttribute('src', dataImage)
 };
+
+
 
 // function map set
 function initMap() {
