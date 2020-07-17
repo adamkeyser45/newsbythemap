@@ -1,5 +1,18 @@
+const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var cityName = document.querySelector("#city");
 var searchBtn = document.querySelector("#searchBtn");
+var modalEl = document.querySelector("modal")
+var dropdown = document.querySelector('.dropdown');
+
+//display current day and time at top of page
+$("#currentDay").text(now)
+
+//trigger drop down when button clicked
+dropdown.addEventListener('click', function(event) {
+  event.stopPropagation();
+  dropdown.classList.toggle('is-active');
+});
+
 
 var citySearch = function () {
     event.preventDefault();
@@ -12,6 +25,7 @@ var citySearch = function () {
         cityName.value = "";
     } else {
         alert("Please enter and ACTUAL city name.");
+        //modalEl.classList.add("is-active")
     }
 };
 
@@ -27,6 +41,8 @@ var getData = function (city) {
                 displayNewsData(data, city);
             });
         } else {
+           
+            forecastContainer.classList.remove("hide")
             alert("Error: " + response.statusText);
         };
     });

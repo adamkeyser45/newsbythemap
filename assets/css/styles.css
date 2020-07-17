@@ -1,3 +1,21 @@
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box; 
+    
+
+}
+body {
+    font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    color: #222; }
+}  
+
 .center {
     text-align: center;
 }
@@ -5,4 +23,70 @@
 .searchForm {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.hero {
+    padding: 3% 4%;
+    width: 100vw;
+    background-color: white; 
+    background-image: url("../images/news2.jpg");
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; */
+    background-position: 80%;
+    z-index: 9999;
+    align-items: center
+}
+
+h1 {
+    color: black;
+    font-size: 3rem; 
+    line-height: 1.2;  
+    opacity: 1;
+    letter-spacing: -.1rem;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    font-size: 1.5rem; 
+    line-height: 1.2;  
+    text-align: center;
+    opacity: 1;
+}
+
+.background {
+    background-color: white;
+    opacity: .70;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form-input {
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.dropdown-menu {
+    text-align: center;
+    width: 100%
+}
+
+.button {
+    width: 100%
+}
+
+.title {
+    font-weight: 100px
+}
+
+.searchDirect {
+    color: black;
+    margin-top: 2rem;
+    font-size: 1rem; 
+    line-height: 1.2;  
+    text-align: center;
+    opacity: 1;
+
 }
