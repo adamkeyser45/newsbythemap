@@ -125,6 +125,10 @@ h2 {
 .title {
     font-weight: bold;
 }
+
+.hide {
+    display: none
+}
   
 #infowindow-content {
     display: none;
@@ -133,6 +137,7 @@ h2 {
 #map #infowindow-content {
     display: inline;
 }
+
 
 /* End Map Styles */
 .newsbox {
@@ -179,3 +184,4 @@ h2 {
     }
 
 }
+
