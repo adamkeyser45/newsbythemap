@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="">
     <meta name="author" content="">
-
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Roboto:wght@100&display=swap"
+        rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/skeleton.css"> -->
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <title>News By the Map</title>
 </head>
-
 <body>
     <section class="hero">
         <div class="background ">
@@ -34,132 +30,121 @@
             <!-- <h2 class="center">Type in a location or drop a pin on the map to find recent news about the area.</h2> -->
         </div>
     </section>
-
     <main class="container is-fluid is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
-        <div class = "columns">
+        <div class="columns">
             <div class=" column is-full center">
                 <form id="user-form" class="searchForm">
-                    <h2 class="searchDirect">Type in a location into the map search box to find recent news about the area.</h2> 
-
-                    <div class="dropdown column">
-                            <div class="dropdown-trigger">
-                              <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                <span>Topic</span>
-                                <span class="icon is-small">
-                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                              </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                              <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    None
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                    World
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                    Nation
-                                  </a>
-                                <a href="#" class="dropdown-item">
-                                    Business
-                                  </a>
-                                <a href="#" class="dropdown-item">
-                                    Technology
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Health
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Entertainment
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Sports
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                   Science
-                                </a>
-                              </div>
-                            </div>
-                        </div>
-
-                        <!--Add in a search bar to add a keyword to the news search-->
-
-
-                        
+                    <h2 class="searchDirect">Type in a location into the map search box to find recent news about the
+                        area.</h2>
                 </form>
             </div>
         </div>
+        <!--Dropdown-->
+        <div class="dropdown is-pulled-right column">
+            <div class="dropdown-trigger">
+                <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <span>Topic</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">
+                        None
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        World
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Nation
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Business
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Technology
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Health
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Entertainment
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Sports
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Science
+                    </a>
+                </div>
+            </div>
+                    <!--Locally Stored cities div-->
+        <h6 class="text"><span id="previous-search">Recently Searched:</span></h6>
+        <div id="history-container" style="border:lightgrey solid 2px;" class="appended-cities is-pulled-right">
+            <ul class="history">
+            </ul>
+        </div>
+        </div>
+        <div style="display: none">
+            <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
+        </div>
+        <div id="map"></div>
+        <div id="infowindow-content">
+            <span id="place-name" class="title"></span><br />
+            <strong>Place ID:</strong> <span id="place-id"></span><br />
+            <span id="place-address"></span>
+        </div>
+        <div class="columns hide">
+            <div class="column newsbox">
+                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center subtitle is-2">News
+                </h2>
+            </div>
+        </div>
+        <div class="columns" style="margin-bottom: 20px;">
+            <div class="">
+                <div id="newsCard">
+                    <img id="image0" class="image" style="margin-right: 20px;" src="" />
+                </div>
+            </div>
+            <div class="tile">
+                <div id="newsCard">
+                    <h5 id="title0"></h5>
+                    <a href="" id="url0" target="_blank"></a>
+                    <h4 class="subtitle is-5"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="columns" style="margin-bottom: 20px;">
+            <div class="">
+                <div id="newsCard">
+                    <img id="image1" class="image" style="margin-right: 20px;" src="" />
+                </div>
+            </div>
+            <div class="tile">
+                <div id="newsCard">
+                    <h5 id="title1"></h5>
+                    <a href="" id="url1" target="_blank"></a>
+                    <h4 class="subtitle is-5"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="columns" style="margin-bottom: 20px;">
+            <div class="">
+                <div id="newsCard">
+                    <img id="image2" class="image" style="margin-right: 20px;" src="" />
+                </div>
+            </div>
+            <div class="tile">
+                <div id="newsCard">
+                    <h5 id="title2"></h5>
+                    <a href="" id="url2" target="_blank"></a>
+                    <h4 class="subtitle is-5"></h4>
+                </div>
+            </div>
+        </div>
 
-        
-            <div style="display: none">
-              
-                <input
-                  id="pac-input"
-                  class="controls"
-                  type="text"
-                  placeholder="Enter a location"
-                />
-              </div>
-              <div id="map"></div>
-              <div id="infowindow-content">
-                <span id="place-name" class="title"></span><br />
-                <strong>Place ID:</strong> <span id="place-id"></span><br />
-                <span id="place-address"></span>
-            </div>
-        
-
-
-
-            <div class="columns hide">
-                <div class="column newsbox">
-                    <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center subtitle is-2">News</h2>
-                </div>
-            </div>
-            <div class="columns" style="margin-bottom: 20px;">
-                <div class="">
-                    <div id="newsCard">
-                        <img id="image0"  class="image" style="margin-right: 20px;" src="" />
-                    </div>
-                </div>
-                <div class="tile">
-                    <div id="newsCard">
-                        <h5 id="title0"></h5>
-                        <a href="" id="url0" target="_blank"></a>
-                        <h4 class="subtitle is-5"></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="columns" style="margin-bottom: 20px;">
-                <div class="">
-                    <div id="newsCard" >
-                        <img id="image1" class="image" style="margin-right: 20px;" src="" />
-                    </div>
-                </div>
-                <div class="tile">
-                    <div id="newsCard">
-                        <h5 id="title1"></h5>
-                        <a href="" id="url1" target="_blank"></a>
-                        <h4 class="subtitle is-5"></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="columns" style="margin-bottom: 20px;">
-                <div class="">
-                    <div id="newsCard" >
-                        <img id="image2" class="image" style="margin-right: 20px;"  src="" />
-                    </div>
-                </div>
-                <div class="tile">
-                    <div id="newsCard">
-                        <h5 id="title2"></h5>
-                        <a href="" id="url2" target="_blank"></a>
-                        <h4 class="subtitle is-5"></h4>
-                    </div>
-                </div>
-            </div>
-        
-    
         <!-- <div class="modal is-active">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -168,7 +153,6 @@
               <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
-            
             </section>
             <footer class="modal-card-foot">
               <button class="button is-success">Save changes</button>
@@ -178,15 +162,13 @@
         </div>
         </div>
     </div> -->
-
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAY0LxkZdOLQZdYZrJ2OWH6QVxrII3GNc&callback=initMap&libraries=places&v=weekly"
-      defer
-    ></script>
-    <script src="./assets/js/script.js"></script>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAY0LxkZdOLQZdYZrJ2OWH6QVxrII3GNc&callback=initMap&libraries=places&v=weekly"
+            defer></script>
+        <script src="./assets/js/script.js"></script>
 </body>
 </html>
