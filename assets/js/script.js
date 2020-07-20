@@ -59,14 +59,6 @@ var getData = function (city) {
 
 // function to display information to page
 var displayNewsData = function (data, city) {
-    // console logs the first articles json data
-    console.log(data.articles);
-    // console log information
-    // console.log(city);
-    // console.log(data.articles[0].title);
-    // console.log(data.articles[0].description);
-    // console.log(data.articles[0].url);
-    // console.log(data.articles[0].image);
 
     for (var i = 0; i < 3; i++) {
      //set news array and for loop to retrieve data
@@ -133,6 +125,11 @@ var previousSearchBtn = function(city) {
 };
 
 // function to handle previousSeachBtn clicks
+var previousSeachBtnHandler = function(event) {
+  // get button's id and sends that to getData()
+  var citySearch = event.target.getAttribute("id");
+  getData(citySearch);
+};
 
 
 // function map set
