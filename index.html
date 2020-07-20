@@ -39,45 +39,48 @@
         <div class = "columns">
             <div class=" column is-full center">
                 <form id="user-form" class="searchForm">
-                    <h2 class="searchDirect">Type in a location into the map search box to find recent news about the area.</h2> 
-
-                    <div class="dropdown column">
-                            <div class="dropdown-trigger">
-                              <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                <span>Topic</span>
-                                <span class="icon is-small">
-                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                              </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                              <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    None
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                    World
-                                   </a>
-                                <a href="#" class="dropdown-item">
-                                    Nation
-                                  </a>
-                                <a href="#" class="dropdown-item">
-                                    Business
-                                  </a>
-                                <a href="#" class="dropdown-item">
-                                    Technology
-                                </a>
-                                <!--Other Topic Options: entertainment, sports, science, health-->
-                              </div>
-                            </div>
-                        </div>
-
-                        <!--Add in a search bar to add a keyword to the news search-->
-
-
-                        
+                    <h2 class="searchDirect">Type in a location into the map search box to find recent news about the area.</h2>          
                 </form>
             </div>
+        </div>
+        <!--Dropdown-->
+        <div class="dropdown is-pulled-right column">
+            <div class="dropdown-trigger">
+              <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <span>Topic</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                    None
+                   </a>
+                <a href="#" class="dropdown-item">
+                    World
+                   </a>
+                <a href="#" class="dropdown-item">
+                    Nation
+                  </a>
+                <a href="#" class="dropdown-item">
+                    Business
+                  </a>
+                <a href="#" class="dropdown-item">
+                    Technology
+                </a>
+                <!--Other Topic Options: entertainment, sports, science, health-->
+              </div>
+            </div>
+        </div>
+        <!--Appended/Locally Stored Cities-->
+     
+        
+        <div id="history-container" class="is-pulled-right" style="border:lightgrey solid 2px;">
+            <h6 class="text"><span id="previous-search"></span></h6>
+            <ul class="history">
+            </ul>
         </div>
 
         
