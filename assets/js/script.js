@@ -9,6 +9,15 @@ var historyList = document.querySelector("#history-list");
 //display current day and time at top of page
 $("#currentDay").text(now)
 
+// updateTime
+function updateTime() {
+  const now = moment();
+  const humanReadable = now.local().format("dddd, MMMM Do YYYY, h:mm A");
+  currentDay.textContent = humanReadable;
+}
+setInterval(updateTime, 60000);
+updateTime();
+
 //trigger drop down when button clicked
 dropdown.addEventListener('click', function(event) {
   event.stopPropagation();
