@@ -4,16 +4,21 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 
 body {
-    font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+    font-size: 1.5em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
     font-weight: 400;
     font-family: "Roboto", sans-serif;
-    color: #222; }
-}  
+    color: #222;
+}
+
+.dropdown {
+    padding: 0px;
+}
 
 .center {
     text-align: center;
@@ -27,7 +32,7 @@ body {
 .hero {
     padding: 3% 4%;
     width: 100vw;
-    background-color: white; 
+    background-color: white;
     background-image: url("../images/news2.jpg");
     background-size: cover;
     background-position: center;
@@ -39,8 +44,8 @@ body {
 
 h1 {
     color: black;
-    font-size: 3rem; 
-    line-height: 1.2;  
+    font-size: 3rem;
+    line-height: 1.2;
     opacity: 1;
     letter-spacing: -.1rem;
     text-align: center;
@@ -48,15 +53,15 @@ h1 {
 
 h2 {
     color: black;
-    font-size: 1.5rem; 
-    line-height: 1.2;  
+    font-size: 1.5rem;
+    line-height: 1.2;
     text-align: center;
     opacity: 1;
 }
 
 .background {
     background-color: white;
-    opacity: .70;
+    opacity: .85;
     padding: 5px;
     border-radius: 5px;
 }
@@ -67,9 +72,18 @@ h2 {
     text-align: center;
 }
 
+.dropdown {
+    width: 40%;
+}
+
 .dropdown-menu {
     text-align: center;
-    width: 100%
+    width: 100%;
+}
+
+.appended-cities {
+    height: 300px;
+    width: 100%;
 }
 
 .button {
@@ -83,38 +97,39 @@ h2 {
 .searchDirect {
     color: black;
     margin-top: 2rem;
-    font-size: 1rem; 
-    line-height: 1.2;  
+    font-size: 1rem;
+    line-height: 1.2;
     text-align: center;
     opacity: 1;
 }
 
 /* Styles for map */
+
 #map {
     height: 400px;
     width: 50%;
+    box-shadow: #858585 1px 1px 15px;
 }
-.dropdown {
-    width: 40%;
-    padding: 0px;
+
+.gm-style-mtc {
+    margin-top: 420px;
 }
 
 .controls {
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 3px;
     border: 1px solid transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
     font-family: Roboto;
-    font-size: 15px;
-    font-weight: 300;
-    height: 29px;
-    margin-left: 17px;
-    margin-top: 10px;
-    outline: none;
-    padding: 0 11px 0 13px;
     text-overflow: ellipsis;
-    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: -175px;
+    width: 400px;
+    justify-self: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .controls:focus {
@@ -124,17 +139,66 @@ h2 {
 .title {
     font-weight: bold;
 }
-  
+
+.hide {
+    display: none
+}
+
 #infowindow-content {
     display: none;
 }
-  
+
 #map #infowindow-content {
     display: inline;
 }
 
+.image {
+    max-width: 300px;
+    max-height: 250px;
+}
+
 /* End Map Styles */
 
-.columns {
-   
+.newsbox {
+    margin-top: 40px;
+}
+
+/*tablet map*/
+
+@media screen and (min-width: 571px) and (max-width: 849px) {
+    .controls {
+        margin-top: 10px;
+        width: 80%;
+        height: 40px;
+        font-size: 24px;
+        margin-left: -175px;
+    }
+}
+
+/* mobile map */
+
+@media screen and (max-width: 570px) {
+    #map {
+        height: 300px;
+    }
+    .controls {
+        margin-top: 10px;
+        margin-left: 3px;
+        height: 40px;
+        padding: 0 5%;
+        font-size: 22px;
+        width: 85%;
+    }
+    .gm-fullscreen-control {
+        display: none;
+    }
+    h1 {
+        font-size: 1.3em;
+        font-weight: bolder;
+        line-height: 2;
+        text-shadow: white 0px 0px 5px;
+    }
+    .gm-style-mtc {
+        display: none;
+    }
 }
