@@ -1,3 +1,4 @@
+
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
@@ -10,7 +11,6 @@ dropdown.addEventListener('click', function(event) {
   event.stopPropagation();
   dropdown.classList.toggle('is-active');
 });
-
 
 var citySearch = function () {
     event.preventDefault();
@@ -75,7 +75,6 @@ var displayNewsData = function (data, city) {
     dataUrlHtml.innerHTML = "Click Here to Read More";
     dataImageHtml.setAttribute('src', dataImage);
 };
-
 
 // function map set
 function initMap() {
