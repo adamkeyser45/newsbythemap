@@ -106,6 +106,7 @@ h2 {
 /* Styles for map */
 
 #map {
+
     height: 400px;
     width: 50%;
     box-shadow: #858585 1px 1px 15px;
@@ -114,8 +115,8 @@ h2 {
 .gm-style-mtc {
     margin-top: 420px;
 }
-
 .controls {
+   
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -157,16 +158,15 @@ h2 {
     max-height: 250px;
 }
 
-/* End Map Styles */
 
+/* End Map Styles */
 .newsbox {
     margin-top: 40px;
 }
-
 /*tablet map*/
-
-@media screen and (min-width: 571px) and (max-width: 849px) {
+@media screen and (min-width: 571px) and (max-width: 849px){
     .controls {
+
         margin-top: 10px;
         width: 80%;
         height: 40px;
@@ -175,13 +175,16 @@ h2 {
     }
 }
 
+
+
 /* mobile map */
 
 @media screen and (max-width: 570px) {
     #map {
         height: 300px;
-    }
-    .controls {
+    }   
+    .controls{
+
         margin-top: 10px;
         margin-left: 3px;
         height: 40px;
@@ -201,4 +204,8 @@ h2 {
     .gm-style-mtc {
         display: none;
     }
+  
 }
+
+
+

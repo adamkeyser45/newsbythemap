@@ -2,7 +2,8 @@
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
-
+var hideEl = document.querySelector(".hide")
+var dropdownItem = document.querySelectorAll(".dropdown-item");
 //display current day and time at top of page
 $("#currentDay").text(now)
 
@@ -11,6 +12,15 @@ dropdown.addEventListener('click', function(event) {
   event.stopPropagation();
   dropdown.classList.toggle('is-active');
 });
+
+console.log(dropdownItem)
+dropdownItem.forEach(element => {
+    element.addEventListener("click", function(event) {
+        dropdownItem.forEach(dropEl =>  dropEl.classList.remove("is-active"))
+        element.classList.add('is-active');
+    })  
+})
+
 
 var citySearch = function () {
     event.preventDefault();
@@ -39,7 +49,6 @@ var getData = function (city) {
                 displayNewsData(data, city);
             });
         } else {
-           
             forecastContainer.classList.remove("hide")
             alert("Error: " + response.statusText);
         };
@@ -57,24 +66,30 @@ var displayNewsData = function (data, city) {
     // console.log(data.articles[0].url);
     // console.log(data.articles[0].image);
 
-// for (var = i; i < 3; i++) {}
-
+    for (var i = 0; i < 3; i++) {
+     //set news array and for loop to retrieve data
+    
     const nameOfCity = city;
-    const dataArticle = data.articles[0].title;
-    const dataUrl = data.articles[0].url;
-    const dataImage = data.articles[0].image;
+    const dataArticle = data.articles[i].title;
+    const dataUrl = data.articles[i].url;
+    const dataImage = data.articles[i].image;
 
     var nameOfCityHtml = document.querySelector("#newsCityTitle");
-    var dataArticleHtml = document.querySelector("#title");
-    var dataUrlHtml = document.querySelector("#url");
-    var dataImageHtml = document.querySelector("#image");
+    var dataArticleHtml = document.getElementById("title" + i);
+    var dataUrlHtml = document.getElementById("url" + i);
+    var dataImageHtml = document.getElementById("image" + i);
 
-    nameOfCityHtml.innerHTML = "News From: " + nameOfCity;
+    hideEl.classList.remove("hide")
+    nameOfCityHtml.innerHTML = "News from " + nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
     dataUrlHtml.setAttribute("href", dataUrl);
     dataUrlHtml.innerHTML = "Click Here to Read More";
     dataImageHtml.setAttribute('src', dataImage);
+
+    }
 };
+
+
 
 // function map set
 function initMap() {
