@@ -4,6 +4,8 @@ var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
 var hideEl = document.querySelector(".hide")
 var dropdownItem = document.querySelectorAll(".dropdown-item");
+var historyList = document.querySelector("#history-list");
+
 //display current day and time at top of page
 $("#currentDay").text(now)
 
@@ -111,6 +113,16 @@ var loadPrevSearches = function() {
   // loop through array and create buttons for previous searches
 };
 
+// function to create a button for previous searches
+var previousSearchBtn = function(city) {
+  // creates a button with the city's name
+  var cityBtn = document.createElement("button");
+  cityBtn.setAttribute("type", "button");
+  cityBtn.setAttribute("id", city);
+  cityBtn.textContent = city;
+  historyList.appendChild(cityBtn);
+}
+
 
 // function map set
 function initMap() {
@@ -161,6 +173,7 @@ function initMap() {
     
     getData(place.name);
     prevSearches.push(place.name);
+    previousSearchBtn(place.name);
     savePrevSearches();
     });
 }
