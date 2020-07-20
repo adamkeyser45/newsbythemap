@@ -111,6 +111,15 @@ var loadPrevSearches = function() {
   prevSearches = JSON.parse(prevSearches);
 
   // loop through array and create buttons for previous searches
+  for (var i = 0; i < prevSearches.length; i++) {
+    // creates a button with the city's name
+    var cityBtn = document.createElement("button");
+    cityBtn.setAttribute("type", "button");
+    cityBtn.setAttribute("id", prevSearches[i]);
+    cityBtn.textContent = prevSearches[i];
+    historyList.appendChild(cityBtn);
+  };
+
 };
 
 // function to create a button for previous searches
@@ -121,7 +130,9 @@ var previousSearchBtn = function(city) {
   cityBtn.setAttribute("id", city);
   cityBtn.textContent = city;
   historyList.appendChild(cityBtn);
-}
+};
+
+// function to handle previousSeachBtn clicks
 
 
 // function map set
@@ -178,4 +189,4 @@ function initMap() {
     });
 }
 
-// loadPrevSearches();
+loadPrevSearches();
