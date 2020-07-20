@@ -89,6 +89,27 @@ var displayNewsData = function (data, city) {
     }
 };
 
+// variable to hold the previous searches
+var prevSearches = [];
+
+// function to save previous searches
+var savePrevSearches = function() {
+  localStorage.setItem("prevSearches", JSON.stringify(prevSearches));
+};
+
+// function to load previous searches to the page
+var loadPrevSearches = function() {
+  
+  // retrieve previous searches from localstorage
+  prevSearches = localStorage.getItem("prevSearches");
+  if (prevSearches === null) {
+    prevSearches = [];
+    return false;
+  }
+  prevSearches = JSON.parse(prevSearches);
+
+  // loop through array and create buttons for previous searches
+};
 
 
 // function map set
@@ -137,7 +158,11 @@ function initMap() {
       });
   
       marker.setVisible(true);
-
+    
     getData(place.name);
+    prevSearches.push(place.name);
+    savePrevSearches();
     });
 }
+
+// loadPrevSearches();
