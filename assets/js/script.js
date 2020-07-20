@@ -1,3 +1,4 @@
+
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');

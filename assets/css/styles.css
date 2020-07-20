@@ -113,9 +113,7 @@ h2 {
     justify-self: center;
     text-align: center;
     font-weight: bold;
-    font-size: 24px;
-
-    
+    font-size: 24px;    
 }
 
 .controls:focus {
@@ -136,6 +134,11 @@ h2 {
   
 #map #infowindow-content {
     display: inline;
+}
+
+.image {
+    max-width: 300px;
+    max-height: 250px;
 }
 
 
