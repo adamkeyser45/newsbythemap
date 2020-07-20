@@ -4,6 +4,8 @@ var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
 var hideEl = document.querySelector(".hide")
 var dropdownItem = document.querySelectorAll(".dropdown-item");
+var historyList = document.querySelector("#history-list");
+
 //display current day and time at top of page
 $("#currentDay").text(now)
 
@@ -57,14 +59,6 @@ var getData = function (city) {
 
 // function to display information to page
 var displayNewsData = function (data, city) {
-    // console logs the first articles json data
-    console.log(data.articles);
-    // console log information
-    // console.log(city);
-    // console.log(data.articles[0].title);
-    // console.log(data.articles[0].description);
-    // console.log(data.articles[0].url);
-    // console.log(data.articles[0].image);
 
     for (var i = 0; i < 3; i++) {
      //set news array and for loop to retrieve data
@@ -89,6 +83,53 @@ var displayNewsData = function (data, city) {
     }
 };
 
+// variable to hold the previous searches
+var prevSearches = [];
+
+// function to save previous searches
+var savePrevSearches = function() {
+  localStorage.setItem("prevSearches", JSON.stringify(prevSearches));
+};
+
+// function to load previous searches to the page
+var loadPrevSearches = function() {
+  
+  // retrieve previous searches from localstorage
+  prevSearches = localStorage.getItem("prevSearches");
+  if (prevSearches === null) {
+    prevSearches = [];
+    return false;
+  }
+  prevSearches = JSON.parse(prevSearches);
+
+  // loop through array and create buttons for previous searches
+  for (var i = 0; i < prevSearches.length; i++) {
+    // creates a button with the city's name
+    var cityBtn = document.createElement("button");
+    cityBtn.setAttribute("type", "button");
+    cityBtn.setAttribute("id", prevSearches[i]);
+    cityBtn.textContent = prevSearches[i];
+    historyList.appendChild(cityBtn);
+  };
+
+};
+
+// function to create a button for previous searches
+var previousSearchBtn = function(city) {
+  // creates a button with the city's name
+  var cityBtn = document.createElement("button");
+  cityBtn.setAttribute("type", "button");
+  cityBtn.setAttribute("id", city);
+  cityBtn.textContent = city;
+  historyList.appendChild(cityBtn);
+};
+
+// function to handle previousSeachBtn clicks
+var previousSeachBtnHandler = function(event) {
+  // get button's id and sends that to getData()
+  var citySearch = event.target.getAttribute("id");
+  getData(citySearch);
+};
 
 
 // function map set
@@ -137,7 +178,12 @@ function initMap() {
       });
   
       marker.setVisible(true);
-
+    
     getData(place.name);
+    prevSearches.push(place.name);
+    previousSearchBtn(place.name);
+    savePrevSearches();
     });
 }
+
+loadPrevSearches();
