@@ -6,14 +6,18 @@
     padding: 0 20px;
     box-sizing: border-box;
 }
-
 body {
     font-size: 1.5em;
     /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
     font-weight: 400;
-    font-family: "Roboto", sans-serif;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
     color: #222;
+}
+.text {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    font-weight: 400;
+ 
 }
 
 .dropdown {
@@ -50,14 +54,16 @@ h1 {
     opacity: 1;
     letter-spacing: -.1rem;
     text-align: center;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
 h2 {
     color: black;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1.2;
     text-align: center;
     opacity: 1;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
 .background {
@@ -67,13 +73,17 @@ h2 {
     border-radius: 5px;
 }
 
+.image {
+    max-width: 300px;
+    max-height: 250px;
+}
 .form-input {
     width: 100%;
     margin-top: 2rem;
     text-align: center;
 }
 .dropdown-trigger {
-    font-family: Roboto;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
     height: 40px;
 }
 .placeholder {
@@ -95,6 +105,25 @@ h2 {
 
 .button {
     width: 100%
+}
+
+.buttons {
+    color: black;
+    background-color: transparent;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;  
+    margin: 3px;
+    display: inline;
+    border: none;
+    text-decoration: underline;
+    font-size: 1.25rem;
+    outline: none;
+}
+
+.buttons:hover {
+    background-color: rgba(147, 161, 177, .3);
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .title {
@@ -121,22 +150,22 @@ h2 {
 .gm-style-mtc {
     margin-top: 420px;
 }
-.controls {
-   
-    background-color: #fff;
+.controls {       
+    color: black;
     border-radius: 3px;
     border: 1px solid transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    font-family: Roboto;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
     text-overflow: ellipsis;
     height: 40px;
     margin-top: 10px;
     margin-left: -175px;
-    width: 60%;
+    width: 40%;
     justify-self: center;
     text-align: center;
-    font-weight: bold;
-    font-size: 24px;
+    font-size: 18px;
+    
+    
 }
 
 .controls:focus {
@@ -158,11 +187,6 @@ h2 {
 
 #map #infowindow-content {
     display: inline;
-}
-
-.image {
-    max-width: 300px;
-    max-height: 250px;
 }
 
 /* End Map Styles */

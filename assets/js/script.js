@@ -114,6 +114,7 @@ var loadPrevSearches = function() {
     var cityBtn = document.createElement("button");
     cityBtn.setAttribute("type", "button");
     cityBtn.setAttribute("id", prevSearches[i]);
+    cityBtn.setAttribute("class", "buttons")
     cityBtn.textContent = prevSearches[i];
     historyList.appendChild(cityBtn);
   };
@@ -126,6 +127,7 @@ var previousSearchBtn = function(city) {
   var cityBtn = document.createElement("button");
   cityBtn.setAttribute("type", "button");
   cityBtn.setAttribute("id", city);
+  cityBtn.setAttribute("class", "buttons")
   cityBtn.textContent = city;
   historyList.appendChild(cityBtn);
 };
