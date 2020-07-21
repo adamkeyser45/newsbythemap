@@ -46,10 +46,10 @@ var citySearch = function () {
     }
 };
 
-var getData = function (city) {
+var getData = function (city, state) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&image=required&token=4ccdaf26cc2857fd5d937371daceb613";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=4ccdaf26cc2857fd5d937371daceb613";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -86,7 +86,6 @@ var displayNewsData = function (data, city) {
     dataUrlHtml.setAttribute("href", dataUrl);
     dataUrlHtml.innerHTML = "Click Here to Read More";
     dataImageHtml.setAttribute('src', dataImage);
-
     }
 };
 
@@ -186,7 +185,10 @@ function initMap() {
   
       marker.setVisible(true);
     
-    getData(place.name);
+    var exactLoc1 = input.value.split(",")[0];
+    var exactLoc2 = input.value.split(",")[1];
+
+    getData(exactLoc1, exactLoc2);
     prevSearches.push(place.name);
     previousSearchBtn(place.name);
     savePrevSearches();
