@@ -41,7 +41,7 @@ var citySearch = function () {
         getData(city);
         cityName.value = "";
     } else {
-        alert("Please enter and ACTUAL city name.");
+        alert("Please enter an ACTUAL city name.");
         //modalEl.classList.add("is-active")
     }
 };
@@ -191,8 +191,7 @@ function initMap() {
     previousSearchBtn(place.name);
     savePrevSearches();
     });
-}
-
+};
 
 historyList.addEventListener("click", previousSeachBtnHandler);
 loadPrevSearches();
