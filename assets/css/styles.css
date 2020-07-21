@@ -18,6 +18,7 @@ body {
 
 .dropdown {
     padding: 0px;
+    margin-bottom: 20px;
 }
 
 .center {
@@ -71,18 +72,24 @@ h2 {
     margin-top: 2rem;
     text-align: center;
 }
-
-.dropdown {
-    width: 40%;
+.dropdown-trigger {
+    font-family: Roboto;
+    height: 40px;
 }
-
+.placeholder {
+    font-weight: 500;
+    color: black;
+    font-size: 20px;
+}
 .dropdown-menu {
     text-align: center;
     width: 100%;
 }
-
+.dropdownBtn {
+    padding: 10px 0;
+}
 .appended-cities {
-    height: 300px;
+    height: 100px;
     width: 100%;
 }
 
@@ -106,9 +113,9 @@ h2 {
 /* Styles for map */
 
 #map {
-
-    height: 400px;
+    height: 550px;
     box-shadow: #858585 1px 1px 15px;
+    margin-bottom: 5px;
 }
 
 .gm-style-mtc {
@@ -146,6 +153,7 @@ h2 {
 
 #infowindow-content {
     display: none;
+    margin-top: 50px;
 }
 
 #map #infowindow-content {

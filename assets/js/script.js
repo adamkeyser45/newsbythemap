@@ -49,7 +49,7 @@ var citySearch = function () {
 var getData = function (city) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&image=required&token=4ccdaf26cc2857fd5d937371daceb613";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&image=required&token=727a88ffb0ce56716bbcef44b445925c";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {

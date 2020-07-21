@@ -40,10 +40,10 @@
             </div>
         </div>
         <!--Dropdown-->
-            <div class="dropdown is-half-desktop is-12-mobile column is-pulled-right">
+            <div class="dropdown is-12 column is-pulled-right">
                 <div class="dropdown-trigger">
-                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                        <span>Topic</span>
+                    <button class="button dropdownBtn" aria-haspopup="true" aria-controls="dropdown-menu2">
+                        <span class="placeholder">CHOOSE TOPIC</span>
                         <span class="icon is-small">
                             <i class="fas fa-angle-down" aria-hidden="true"></i>
                         </span>
@@ -81,21 +81,14 @@
                     </div>
                 </div>
             </div>
-         <!--Locally Stored cities DESKTOP div-->
-         <h6 class="text is-hidden-touch"><span id="previous-search">Recently Searched:</span></h6>
-         <div id="history-container" style="border:lightgrey solid 2px;" class="column appended-cities is-pulled-right is-half-desktop is-hidden-touch">
-             <ul id="history-list" class="history is-hidden-touch">
-             </ul>
-         </div>
          <!--MAP-->
         <div style="display: none">
             <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
         </div>
-        <div id="map" class="column is-half-desktop is-12-mobile"></div>
-         <!--Locally Stored cities MOBILE div-->
-         <div id="history-container" style="border:lightgrey solid 2px;" class="appended-cities is-pulled-right is-hidden-desktop">
-            <h6 class="text is-hidden-desktop"><span id="previous-search">Recently Searched:</span></h6>
-             <ul class="history is-hidden-desktop">
+        <div id="map" class="column is-12"></div>
+         <!--Locally Stored cities div-->
+         <div id="history-container" style="border:lightgrey solid 2px;" class="appended-cities">
+             <ul class="history" id="history-list">
              </ul>
          </div>
          <!--NEWS-->
@@ -104,9 +97,9 @@
             <strong>Place ID:</strong> <span id="place-id"></span><br />
             <span id="place-address"></span>
         </div>
-        <div class="columns hide">
-            <div class="column hide newsbox">
-                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center subtitle is-2">News
+        <div class="columns">
+            <div class="column newsbox">
+                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center subtitle is-2 hide">News
                 </h2>
             </div>
         </div>
