@@ -2,10 +2,13 @@
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
+var dropDwnOptGrp = document.querySelector("#dropDwnOptGrp");
 var hideEl = document.querySelector(".hide")
 var dropdownItem = document.querySelectorAll(".dropdown-item");
 var historyList = document.querySelector("#history-list");
 var topicEl = document.querySelector("#topic")
+var choiceSelection = "";
+
 
 //display current day and time at top of page
 $("#currentDay").text(now)
@@ -51,7 +54,10 @@ var citySearch = function () {
 var getData = function (city, state) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=0423f517a308948ba1dbc2d5ca4fb0cf";
+    var searchQuery = choiceSelection + "%20" + city + "%20" + state.trim();
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=e5001b8165309418e621b398625f5c9b";
+
+    console.log(apiUrl);
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -234,5 +240,12 @@ function initMap() {
     });
 };
 
+var topicChoice = function(event) {
+  var topic = event.target;
+  var choice = topic.getAttribute("value");
+  choiceSelection = choice;
+};
+
 historyList.addEventListener("click", previousSeachBtnHandler);
+dropDwnOptGrp.addEventListener("click", topicChoice);
 loadPrevSearches();
