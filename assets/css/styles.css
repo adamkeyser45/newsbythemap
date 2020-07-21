@@ -74,13 +74,20 @@ h2 {
 }
 
 .image {
-    max-width: 300px;
-    max-height: 250px;
+    min-width: 275px;
+    min-height: 190px;
+    max-width: 275px;
+    max-height: 190px;
+    
+}
+.box{
+    vertical-align: center;
 }
 .form-input {
     width: 100%;
     margin-top: 2rem;
     text-align: center;
+    
 }
 .dropdown-trigger {
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
@@ -114,7 +121,7 @@ h2 {
     margin: 3px;
     display: inline;
     border: none;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-size: 1.25rem;
     outline: none;
 }
