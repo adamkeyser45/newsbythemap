@@ -49,7 +49,7 @@ var citySearch = function () {
 var getData = function (city, state) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=6239b8aeaa278adf5c3b7cc28b4fba9b";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=e5001b8165309418e621b398625f5c9b";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -122,13 +122,13 @@ var loadPrevSearches = function() {
 };
 
 // function to create a button for previous searches
-var previousSearchBtn = function(city) {
+var previousSearchBtn = function(city, state) {
   // creates a button with the city's name
   var cityBtn = document.createElement("button");
   cityBtn.setAttribute("type", "button");
-  cityBtn.setAttribute("id", city);
+  cityBtn.setAttribute("id", city + "-" + state);
   cityBtn.setAttribute("class", "buttons")
-  cityBtn.textContent = city;
+  cityBtn.textContent = city + " " + state;
   historyList.appendChild(cityBtn);
 };
 
@@ -136,7 +136,12 @@ var previousSearchBtn = function(city) {
 var previousSeachBtnHandler = function(event) {
   // get button's id and sends that to getData()
   var citySearch = event.target.getAttribute("id");
-  getData(citySearch);
+  
+  var exactLoc1 = citySearch.split("-")[0];
+  var exactLoc2 = citySearch.split("-")[1];
+
+
+  getData(exactLoc1, exactLoc2);
 };
 
 
@@ -191,8 +196,8 @@ function initMap() {
     var exactLoc2 = input.value.split(",")[1];
 
     getData(exactLoc1, exactLoc2);
-    prevSearches.push(place.name);
-    previousSearchBtn(place.name);
+    prevSearches.push(exactLoc1 + "-" + exactLoc2);
+    previousSearchBtn(exactLoc1, exactLoc2);
     savePrevSearches();
     });
 };
