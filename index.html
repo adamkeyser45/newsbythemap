@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,7 @@
     <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <title>News By the Map</title>
 </head>
+
 <body>
     <section class="hero w3-grayscale">
         <div class="background ">
@@ -35,64 +37,65 @@
         <div class="columns">
             <div class=" column is-full center">
                 <form id="user-form" class="searchForm">
-                    <h2 class="searchDirect text">Type in a location into the map search box to find recent news about the
+                    <h2 class="searchDirect text">Type in a location into the map search box to find recent news about
+                        the
                         area.</h2>
                 </form>
             </div>
         </div>
         <!--Dropdown-->
-            <div class="dropdown is-12 column">
-                <div class="dropdown-trigger">
-                    <button class="button dropdownBtn" aria-haspopup="true" aria-controls="dropdown-menu2">
-                        <span class="placeholder text">Choose Topic</span>
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                    <div class="dropdown-content text">
-                        <a href="#" class="dropdown-item">
-                            None
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            World
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Nation
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Business
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Technology
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Health
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Entertainment
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Sports
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Science
-                        </a>
-                    </div>
+        <div class="dropdown is-12 column">
+            <div class="dropdown-trigger">
+                <button class="button dropdownBtn" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <span class="placeholder text">Choose Topic</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                <div class="dropdown-content text">
+                    <a href="#" class="dropdown-item">
+                        None
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        World
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Nation
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Business
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Technology
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Health
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Entertainment
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Sports
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Science
+                    </a>
                 </div>
             </div>
-         <!--MAP-->
+        </div>
+        <!--MAP-->
         <div style="display: none" class="text">
             <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
         </div>
         <div id="map" class="column is-12"></div>
-         <!--Locally Stored cities div-->
-         <div id="history-container" class="appended-cities">
-             <ul class="history" id="history-list">
-             </ul>
-         </div>
-         <!--NEWS-->
+        <!--Locally Stored cities div-->
+        <div id="history-container" class="appended-cities">
+            <ul class="history" id="history-list">
+            </ul>
+        </div>
+        <!--NEWS-->
         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br />
             <strong>Place ID:</strong> <span id="place-id"></span><br />
@@ -100,49 +103,56 @@
         </div>
         <div class="columns">
             <div class="column newsbox">
-                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;" class="center text subtitle is-2 hide">News
+                <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;"
+                    class="center text subtitle is-2 hide">News
                 </h2>
             </div>
         </div>
-        <div class="columns" style="margin-bottom: 20px;">
-            <div class="">
-                <div id="newsCard">
-                    <img id="image0" class="image" style="margin-right: 20px;" src="" />
+        <div class="box">
+            <div class="columns" style="margin-bottom: 20px;">
+                <div class="">
+                    <div id="newsCard">
+                        <img id="image0" class="image" style="margin-right: 20px; margin-bottom:5px" src="" />
+                    </div>
                 </div>
-            </div>
-            <div class="tile">
-                <div id="newsCard">
-                    <h5 id="title0"></h5>
-                    <a href="" id="url0" target="_blank"></a>
-                    <h4 class="subtitle is-5"></h4>
-                </div>
-            </div>
-        </div>
-        <div class="columns" style="margin-bottom: 20px;">
-            <div class="">
-                <div id="newsCard">
-                    <img id="image1" class="image" style="margin-right: 20px;" src="" />
-                </div>
-            </div>
-            <div class="tile">
-                <div id="newsCard">
-                    <h5 id="title1"></h5>
-                    <a href="" id="url1" target="_blank"></a>
-                    <h4 class="subtitle is-5"></h4>
+                <div class="tile">
+                    <div id="newsCard">
+                        <h5 id="title0"></h5>
+                        <a href="" id="url0" target="_blank"></a>
+                        <h4 class="subtitle is-5"></h4>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="columns" style="margin-bottom: 20px;">
-            <div class="">
-                <div id="newsCard">
-                    <img id="image2" class="image" style="margin-right: 20px;" src="" />
+        <div class="box">
+            <div class="columns" style="margin-bottom: 20px;">
+                <div class="">
+                    <div id="newsCard">
+                        <img id="image1" class="image" style="margin-right: 20px;" src="" />
+                    </div>
+                </div>
+                <div class="tile">
+                    <div id="newsCard">
+                        <h5 id="title1"></h5>
+                        <a href="" id="url1" target="_blank"></a>
+                        <h4 class="subtitle is-5"></h4>
+                    </div>
                 </div>
             </div>
-            <div class="tile">
-                <div id="newsCard">
-                    <h5 id="title2"></h5>
-                    <a href="" id="url2" target="_blank"></a>
-                    <h4 class="subtitle is-5"></h4>
+        </div>
+        <div class="box">
+            <div class="columns" style="margin-bottom: 20px;">
+                <div class="">
+                    <div id="newsCard">
+                        <img id="image2" class="image" style="margin-right: 20px;" src="" />
+                    </div>
+                </div>
+                <div class="tile">
+                    <div id="newsCard">
+                        <h5 id="title2"></h5>
+                        <a href="" id="url2" target="_blank"></a>
+                        <h4 class="subtitle is-5"></h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,4 +183,5 @@
             defer></script>
         <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
