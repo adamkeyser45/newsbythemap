@@ -52,7 +52,7 @@ var getData = function (city, state) {
 
     // format the url
     var searchQuery = choiceSelection + "%20" + city + "%20" + state.trim();
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=4ccdaf26cc2857fd5d937371daceb613";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=e5001b8165309418e621b398625f5c9b";
 
     console.log(apiUrl);
 
