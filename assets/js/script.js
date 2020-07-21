@@ -122,12 +122,14 @@ var loadPrevSearches = function() {
 };
 
 // function to create a button for previous searches
-var previousSearchBtn = function(city, state) {
+var previousSearchBtn = function(city, state, lat, long) {
   // creates a button with the city's name
   var cityBtn = document.createElement("button");
   cityBtn.setAttribute("type", "button");
   cityBtn.setAttribute("id", city + "-" + state);
-  cityBtn.setAttribute("class", "buttons")
+  cityBtn.setAttribute("class", "buttons");
+  cityBtn.setAttribute("lat", lat);
+  cityBtn.setAttribute("long", long);
   cityBtn.textContent = city + " " + state;
   historyList.appendChild(cityBtn);
 };
@@ -143,7 +145,7 @@ var previousSeachBtnHandler = function(event) {
 
   getData(exactLoc1, exactLoc2);
 };
-
+  
 
 // function map set
 function initMap() {
@@ -194,19 +196,28 @@ function initMap() {
     
       var exactLoc1 = input.value.split(",")[0];
       var exactLoc2 = input.value.split(",")[1];
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();  
 
       getData(exactLoc1, exactLoc2);
       prevSearches.push(exactLoc1 + "-" + exactLoc2);
-      previousSearchBtn(exactLoc1, exactLoc2);
+
+      previousSearchBtn(exactLoc1, exactLoc2, latitude, longitude);
       savePrevSearches();
-      console.log(marker.location);
+
     });
 
-    historyList.addEventListener("click", function() {
-      map.setCenter({  lat: 43.8791, lng: 103.4591 })
+    historyList.addEventListener("click", function(event) {
+
+      var button = event.target;
+      var x = button.getAttribute("lat");
+      var y = button.getAttribute("long");
+      console.log(x, y);
+
+      map.setCenter({  lat: parseInt(x), lng: parseInt(y) });
+      map.setZoom(8);
     });
 };
-
 
 historyList.addEventListener("click", previousSeachBtnHandler);
 loadPrevSearches();
