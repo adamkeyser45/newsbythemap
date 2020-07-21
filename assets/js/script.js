@@ -49,7 +49,7 @@ var citySearch = function () {
 var getData = function (city, state) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=e5001b8165309418e621b398625f5c9b";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=0423f517a308948ba1dbc2d5ca4fb0cf";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -89,18 +89,20 @@ var displayNewsData = function (data, city) {
     }
 };
 
-// variable to hold the previous searches
+// array to hold the previous searches and lat/long data
 var prevSearches = [];
+var latLongArray = [];
 
 // function to save previous searches
 var savePrevSearches = function() {
   localStorage.setItem("prevSearches", JSON.stringify(prevSearches));
+  localStorage.setItem("latLongArray", JSON.stringify(latLongArray));
 };
 
 // function to load previous searches to the page
 var loadPrevSearches = function() {
   
-  // retrieve previous searches from localstorage
+  // retrieve previous searches and lat/long data from localstorage
   prevSearches = localStorage.getItem("prevSearches");
   if (prevSearches === null) {
     prevSearches = [];
@@ -108,13 +110,26 @@ var loadPrevSearches = function() {
   }
   prevSearches = JSON.parse(prevSearches);
 
+  latLongArray = localStorage.getItem("latLongArray");
+  if (latLongArray === null) {
+    latLongArray = [];
+    return false;
+  }
+  latLongArray = JSON.parse(latLongArray);
+
   // loop through array and create buttons for previous searches
   for (var i = 0; i < prevSearches.length; i++) {
     // creates a button with the city's name
     var cityBtn = document.createElement("button");
     cityBtn.setAttribute("type", "button");
     cityBtn.setAttribute("id", prevSearches[i]);
-    cityBtn.setAttribute("class", "buttons")
+    cityBtn.setAttribute("class", "buttons");
+
+    var lat = latLongArray[i].split(",")[0];
+    var long = latLongArray[i].split(",")[1];
+
+    cityBtn.setAttribute("lat", lat);
+    cityBtn.setAttribute("long", long);
     cityBtn.textContent = prevSearches[i];
     historyList.appendChild(cityBtn);
   };
@@ -122,12 +137,14 @@ var loadPrevSearches = function() {
 };
 
 // function to create a button for previous searches
-var previousSearchBtn = function(city, state) {
+var previousSearchBtn = function(city, state, lat, long) {
   // creates a button with the city's name
   var cityBtn = document.createElement("button");
   cityBtn.setAttribute("type", "button");
   cityBtn.setAttribute("id", city + "-" + state);
-  cityBtn.setAttribute("class", "buttons")
+  cityBtn.setAttribute("class", "buttons");
+  cityBtn.setAttribute("lat", lat);
+  cityBtn.setAttribute("long", long);
   cityBtn.textContent = city + " " + state;
   historyList.appendChild(cityBtn);
 };
@@ -140,10 +157,9 @@ var previousSeachBtnHandler = function(event) {
   var exactLoc1 = citySearch.split("-")[0];
   var exactLoc2 = citySearch.split("-")[1];
 
-
   getData(exactLoc1, exactLoc2);
 };
-
+  
 
 // function map set
 function initMap() {
@@ -192,13 +208,27 @@ function initMap() {
   
       marker.setVisible(true);
     
-    var exactLoc1 = input.value.split(",")[0];
-    var exactLoc2 = input.value.split(",")[1];
+      var exactLoc1 = input.value.split(",")[0];
+      var exactLoc2 = input.value.split(",")[1];
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();  
 
-    getData(exactLoc1, exactLoc2);
-    prevSearches.push(exactLoc1 + "-" + exactLoc2);
-    previousSearchBtn(exactLoc1, exactLoc2);
-    savePrevSearches();
+      getData(exactLoc1, exactLoc2);
+      prevSearches.push(exactLoc1 + "-" + exactLoc2);
+      latLongArray.push(latitude + "," + longitude);
+      previousSearchBtn(exactLoc1, exactLoc2, latitude, longitude);
+      savePrevSearches();
+    });
+
+    historyList.addEventListener("click", function(event) {
+
+      var button = event.target;
+      var x = button.getAttribute("lat");
+      var y = button.getAttribute("long");
+      console.log(x, y);
+
+      map.setCenter({  lat: parseInt(x), lng: parseInt(y) });
+      map.setZoom(8);
     });
 };
 
