@@ -89,18 +89,20 @@ var displayNewsData = function (data, city) {
     }
 };
 
-// variable to hold the previous searches
+// array to hold the previous searches and lat/long data
 var prevSearches = [];
+var latLongArray = [];
 
 // function to save previous searches
 var savePrevSearches = function() {
   localStorage.setItem("prevSearches", JSON.stringify(prevSearches));
+  localStorage.setItem("latLongArray", JSON.stringify(latLongArray));
 };
 
 // function to load previous searches to the page
 var loadPrevSearches = function() {
   
-  // retrieve previous searches from localstorage
+  // retrieve previous searches and lat/long data from localstorage
   prevSearches = localStorage.getItem("prevSearches");
   if (prevSearches === null) {
     prevSearches = [];
@@ -108,13 +110,26 @@ var loadPrevSearches = function() {
   }
   prevSearches = JSON.parse(prevSearches);
 
+  latLongArray = localStorage.getItem("latLongArray");
+  if (latLongArray === null) {
+    latLongArray = [];
+    return false;
+  }
+  latLongArray = JSON.parse(latLongArray);
+
   // loop through array and create buttons for previous searches
   for (var i = 0; i < prevSearches.length; i++) {
     // creates a button with the city's name
     var cityBtn = document.createElement("button");
     cityBtn.setAttribute("type", "button");
     cityBtn.setAttribute("id", prevSearches[i]);
-    cityBtn.setAttribute("class", "buttons")
+    cityBtn.setAttribute("class", "buttons");
+
+    var lat = latLongArray[i].split(",")[0];
+    var long = latLongArray[i].split(",")[1];
+
+    cityBtn.setAttribute("lat", lat);
+    cityBtn.setAttribute("long", long);
     cityBtn.textContent = prevSearches[i];
     historyList.appendChild(cityBtn);
   };
@@ -141,7 +156,6 @@ var previousSeachBtnHandler = function(event) {
   
   var exactLoc1 = citySearch.split("-")[0];
   var exactLoc2 = citySearch.split("-")[1];
-
 
   getData(exactLoc1, exactLoc2);
 };
@@ -201,10 +215,9 @@ function initMap() {
 
       getData(exactLoc1, exactLoc2);
       prevSearches.push(exactLoc1 + "-" + exactLoc2);
-
+      latLongArray.push(latitude + "," + longitude);
       previousSearchBtn(exactLoc1, exactLoc2, latitude, longitude);
       savePrevSearches();
-
     });
 
     historyList.addEventListener("click", function(event) {
