@@ -49,7 +49,7 @@ var citySearch = function () {
 var getData = function (city, state) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=e5001b8165309418e621b398625f5c9b";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + state + "&image=required&token=0423f517a308948ba1dbc2d5ca4fb0cf";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -192,15 +192,21 @@ function initMap() {
   
       marker.setVisible(true);
     
-    var exactLoc1 = input.value.split(",")[0];
-    var exactLoc2 = input.value.split(",")[1];
+      var exactLoc1 = input.value.split(",")[0];
+      var exactLoc2 = input.value.split(",")[1];
 
-    getData(exactLoc1, exactLoc2);
-    prevSearches.push(exactLoc1 + "-" + exactLoc2);
-    previousSearchBtn(exactLoc1, exactLoc2);
-    savePrevSearches();
+      getData(exactLoc1, exactLoc2);
+      prevSearches.push(exactLoc1 + "-" + exactLoc2);
+      previousSearchBtn(exactLoc1, exactLoc2);
+      savePrevSearches();
+      console.log(marker.location);
+    });
+
+    historyList.addEventListener("click", function() {
+      map.setCenter({  lat: 43.8791, lng: 103.4591 })
     });
 };
+
 
 historyList.addEventListener("click", previousSeachBtnHandler);
 loadPrevSearches();
