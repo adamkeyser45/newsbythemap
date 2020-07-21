@@ -24,14 +24,12 @@ dropdown.addEventListener('click', function(event) {
   dropdown.classList.toggle('is-active');
 });
 
-console.log(dropdownItem)
 dropdownItem.forEach(element => {
     element.addEventListener("click", function(event) {
         dropdownItem.forEach(dropEl =>  dropEl.classList.remove("is-active"))
         element.classList.add('is-active');
     })  
 })
-
 
 var citySearch = function () {
     event.preventDefault();
@@ -51,7 +49,7 @@ var citySearch = function () {
 var getData = function (city) {
 
     // format the url
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&token=4ccdaf26cc2857fd5d937371daceb613&image=required";
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + city + "&image=required&token=4ccdaf26cc2857fd5d937371daceb613";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -195,4 +193,6 @@ function initMap() {
     });
 }
 
+
+historyList.addEventListener("click", previousSeachBtnHandler);
 loadPrevSearches();
