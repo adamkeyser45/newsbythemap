@@ -1,2 +1,22 @@
 # newsbythemap
-A news web application that is based off of location input.
+A news web application that provides news articles based off of location input. The user is given the option to pick a topic from a dropdown menu to filter their search. When the user searches for a city, they are provided with the top three news articles associated with that city and topic, if applicable. When the user views the three news clips for each city, they are presented with an image for the news article, the title, and a url link to the the full news article. When the user searches searches a city, it is added to their search history. When they click on a city in their search history, they are again presented with the top three news articles for that city.
+
+## Built With
+* HTML
+* CSS
+* JavaScript
+* Bulma
+* moment.js
+* jQuery
+
+## Website
+https://adamkeyser45.github.io/newsbythemap/
+
+## Screenshot
+![Screenshot of main page](assets/images/page1.png)
+![Screenshot of main page](assets/images/page2.png)
+![Screenshot of main page](assets/images/page3.png)
+
+## Contribution
+Melanie Gilman, Jon Prine, Jessica Tillman,  Adam Keyser, and Mallory Korpics
+
