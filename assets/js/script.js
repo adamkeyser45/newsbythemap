@@ -5,6 +5,7 @@ var dropdown = document.querySelector('.dropdown');
 var hideEl = document.querySelector(".hide")
 var dropdownItem = document.querySelectorAll(".dropdown-item");
 var historyList = document.querySelector("#history-list");
+var topicEl = document.querySelector("#topic")
 
 //display current day and time at top of page
 $("#currentDay").text(now)
@@ -28,6 +29,7 @@ dropdownItem.forEach(element => {
     element.addEventListener("click", function(event) {
         dropdownItem.forEach(dropEl =>  dropEl.classList.remove("is-active"))
         element.classList.add('is-active');
+        topicEl.innerHTML = element.innerHTML 
     })  
 })
 
