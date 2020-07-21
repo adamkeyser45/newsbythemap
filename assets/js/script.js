@@ -58,7 +58,7 @@ var getData = function (city, state) {
                 displayNewsData(data, city);
             });
         } else {
-            forecastContainer.classList.remove("hide")
+            hideEl.classList.remove("hide")
             alert("Error: " + response.statusText);
         };
     });

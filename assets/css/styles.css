@@ -1,3 +1,4 @@
+/* BODY STYLES */
 .container {
     position: relative;
     width: 100%;
@@ -17,23 +18,13 @@ body {
 .text {
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
     font-weight: 400;
- 
-}
-
-.dropdown {
-    padding: 0px;
-    margin-bottom: 20px;
 }
 
 .center {
     text-align: center;
 }
 
-.searchForm {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
+/* HERO AND HEADING STYLES */
 .hero {
     padding: 3% 4%;
     width: 100vw;
@@ -41,12 +32,10 @@ body {
     background-image: url("../images/news2.jpg");
     background-size: cover;
     background-position: center;
-    /* background-attachment: fixed; */
     background-position: 80%;
     z-index: 9999;
     align-items: center
 }
-
 h1 {
     color: black;
     font-size: 3rem;
@@ -56,7 +45,6 @@ h1 {
     text-align: center;
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
-
 h2 {
     color: black;
     font-size: 2rem;
@@ -65,78 +53,28 @@ h2 {
     opacity: 1;
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
-
 .background {
     background-color: white;
     opacity: .85;
     padding: 5px;
     border-radius: 5px;
 }
-
 .image {
     min-width: 275px;
     min-height: 190px;
     max-width: 275px;
-    max-height: 190px;
-    
-}
-.box{
-    vertical-align: center;
-}
-.form-input {
-    width: 100%;
-    margin-top: 2rem;
-    text-align: center;
-    
-}
-.dropdown-trigger {
-    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
-    height: 40px;
-}
-.placeholder {
-    font-weight: 500;
-    color: black;
-    font-size: 20px;
-}
-.dropdown-menu {
-    text-align: center;
-    width: 100%;
-}
-.dropdownBtn {
-    padding: 10px 0;
-}
-.appended-cities {
-    height: 100px;
-    width: 100%;
+    max-height: 190px; 
 }
 
-.button {
-    width: 100%
-}
+/* SEARCH STYLES */
 
-.buttons {
-    color: black;
-    background-color: transparent;
-    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;  
-    margin: 3px;
-    display: inline;
-    border: none;
-    /* text-decoration: underline; */
-    font-size: 1.25rem;
-    outline: none;
+.searchForm {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
-.buttons:hover {
-    background-color: rgba(147, 161, 177, .3);
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
 .title {
     font-weight: 100px
 }
-
 .searchDirect {
     color: black;
     margin-top: 2rem;
@@ -145,8 +83,65 @@ h2 {
     text-align: center;
     opacity: 1;
 }
+.box{
+    vertical-align: center;
+}
+.form-input {
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+}
+.placeholder {
+    font-weight: 500;
+    color: black;
+    font-size: 1rem;
+}
+.appended-cities {
+    height: 100px;
+    width: 100%;
+}
 
-/* Styles for map */
+/* DROPDOWN STYLES */
+
+.dropdown {
+    padding: 0px;
+    margin-bottom: 20px;
+}
+.dropdown-trigger {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    height: 40px;
+}
+.dropdown-menu {
+    text-align: center;
+    width: 100%;
+}
+.dropdownBtn {
+    padding: 10px 0;
+}
+
+/* BUTTON STYLES */
+
+.button {
+    width: 100%
+}
+.buttons {
+    color: black;
+    background-color: transparent;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;  
+    margin: 3px;
+    display: inline;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+.buttons:hover {
+    background-color: rgba(147, 161, 177, .3);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* STYLES FOR MAP */
 
 #map {
     height: 550px;
@@ -170,11 +165,8 @@ h2 {
     width: 40%;
     justify-self: center;
     text-align: center;
-    font-size: 18px;
-    
-    
+    font-size: 18px;    
 }
-
 .controls:focus {
     border-color: #4d90fe;
 }
@@ -196,34 +188,33 @@ h2 {
     display: inline;
 }
 
-/* End Map Styles */
+/*SCROLL BAR STYLES */
 
-/*SCROLL BAR*/
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
   }
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px white; 
-    background: white;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background:rgb(66, 65, 65); 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background:rgb(66, 65, 65); 
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white; 
+  background: white;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:rgb(66, 65, 65); 
+}
 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:rgb(66, 65, 65); 
+}
 .newsbox {
     margin-top: 40px;
 }
-/*tablet map*/
+
+/* MEDIA QUERIES FOR TABLET */
 @media screen and (min-width: 571px) and (max-width: 849px){
     .controls {
 
@@ -236,8 +227,7 @@ h2 {
 }
 
 
-
-/* mobile map */
+/* MEDIA QUERIES FOR MOBILE */
 
 @media screen and (max-width: 570px) {
     #map {
