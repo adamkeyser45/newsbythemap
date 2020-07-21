@@ -13,9 +13,9 @@ A news web application that provides news articles based off of location input. 
 https://adamkeyser45.github.io/newsbythemap/
 
 ## Screenshot
-![Screenshot of main page](assets/images/page1.png)
-![Screenshot of main page](assets/images/page2.png)
-![Screenshot of main page](assets/images/page3.png)
+![Screenshot of main page](assets/images/page1.jpg)
+![Screenshot of main page](assets/images/page2.jpg)
+![Screenshot of main page](assets/images/page3.jpg)
 
 ## Contribution
 Melanie Gilman, Jon Prine, Jessica Tillman,  Adam Keyser, and Mallory Korpics
