@@ -15,13 +15,9 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <!-- <link rel="stylesheet" href="./assets/css/normalize.css">
-    <link rel="stylesheet" href="./assets/css/skeleton.css"> -->
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
     <title>News By the Map</title>
 </head>
 
@@ -30,19 +26,15 @@
         <div class="background ">
             <h1 style="margin-top: 10px;" class="text">News by the Map</h1>
             <h2 class="currentDay text" id="currentDay"></h2>
-            <!-- <h2 class="center">Type in a location or drop a pin on the map to find recent news about the area.</h2> -->
         </div>
     </section>
     <main class="container is-fluid is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
         <div class="columns">
             <div class=" column is-full center">
-                <form id="user-form" class="searchForm">
-                    <h2 class="searchDirect text">Type in a location into the map search box to find recent news about
-                        the
-                        area.</h2>
-                </form>
+                    <h2 class="searchDirect text">Type in a location into the map search box to find recent news about the area.</h2>
             </div>
         </div>
+
         <!--Dropdown-->
         <div class="dropdown is-12 column">
             <div class="dropdown-trigger">
@@ -79,16 +71,19 @@
                 </div>
             </div>
         </div>
+
         <!--MAP-->
         <div style="display: none" class="text">
             <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
         </div>
         <div id="map" class="column is-12"></div>
+
         <!--Locally Stored cities div-->
         <div id="history-container" class="appended-cities">
             <ul class="history" id="history-list">
             </ul>
         </div>
+
         <!--NEWS-->
         <div id="infowindow-content">
             <span id="place-name" class="title"></span><br />
@@ -150,25 +145,9 @@
                 </div>
             </div>
         </div>
+    </main>
 
-        <!-- <div class="modal is-active">
-          <div class="modal-background"></div>
-          <div class="modal-card">
-            <header class="modal-card-head">
-              <p class="modal-card-title">Modal title</p>
-              <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-            </section>
-            <footer class="modal-card-foot">
-              <button class="button is-success">Save changes</button>
-              <button class="button">Cancel</button>
-            </footer>
-          </div>
-        </div>
-        </div>
-    </div> -->
-        </div>
+    <!-- Script Links -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
