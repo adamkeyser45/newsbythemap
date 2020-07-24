@@ -1,4 +1,4 @@
-
+// global variables
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
 var modalEl = document.querySelector("modal")
 var dropdown = document.querySelector('.dropdown');
@@ -8,7 +8,6 @@ var dropdownItem = document.querySelectorAll(".dropdown-item");
 var historyList = document.querySelector("#history-list");
 var topicEl = document.querySelector("#topic")
 var choiceSelection = "";
-
 
 //display current day and time at top of page
 $("#currentDay").text(now)
@@ -36,28 +35,18 @@ dropdownItem.forEach(element => {
     })  
 })
 
-var citySearch = function () {
-    event.preventDefault();
-    var city = cityName.value.trim();
-
-    // check if the name is good
-    if (city) {
-        //send to the getData() function
-        getData(city);
-        cityName.value = "";
-    } else {
-        alert("Please enter an ACTUAL city name.");
-        //modalEl.classList.add("is-active")
-    }
+// function to configure topic choice
+var topicChoice = function(event) {
+  var topic = event.target;
+  var choice = topic.getAttribute("value");
+  choiceSelection = choice;
 };
 
+// function to fetch news from GNews API
 var getData = function (city, state) {
-
     // format the url
     var searchQuery = choiceSelection + "%20" + city + "%20" + state.trim();
     var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=e5001b8165309418e621b398625f5c9b";
-
-    console.log(apiUrl);
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
@@ -191,7 +180,8 @@ function initMap() {
     infowindow.setContent(infowindowContent);
   
     var marker = new google.maps.Marker({ map: map });
-  
+    
+    // Event Listener for city searchbar
     autocomplete.addListener("place_changed", function() {
       infowindow.close();
   
@@ -215,7 +205,9 @@ function initMap() {
       });
   
       marker.setVisible(true);
-    
+      
+
+      // format search input and send to the correct functions
       var exactLoc1 = input.value.split(",")[0];
       var exactLoc2 = input.value.split(",")[1];
       var latitude = place.geometry.location.lat();
@@ -228,6 +220,7 @@ function initMap() {
       savePrevSearches();
     });
 
+    // event listener to change map to center when prevSearchBtn's are clicked
     historyList.addEventListener("click", function(event) {
 
       var button = event.target;
@@ -238,12 +231,6 @@ function initMap() {
       map.setCenter({  lat: parseInt(x), lng: parseInt(y) });
       map.setZoom(8);
     });
-};
-
-var topicChoice = function(event) {
-  var topic = event.target;
-  var choice = topic.getAttribute("value");
-  choiceSelection = choice;
 };
 
 historyList.addEventListener("click", previousSeachBtnHandler);
