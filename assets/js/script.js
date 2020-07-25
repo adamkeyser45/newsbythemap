@@ -8,6 +8,7 @@ var dropdownItem = document.querySelectorAll(".dropdown-item");
 var historyList = document.querySelector("#history-list");
 var topicEl = document.querySelector("#topic")
 var choiceSelection = "";
+var input = document.getElementById("pac-input");
 
 //display current day and time at top of page
 $("#currentDay").text(now)
@@ -83,6 +84,8 @@ var displayNewsData = function (data, city) {
     dataUrlHtml.setAttribute("href", dataUrl);
     dataUrlHtml.innerHTML = "Click Here to Read More";
     dataImageHtml.setAttribute('src', dataImage);
+    dataImageHtml.setAttribute('onerror',"this.src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/news-512.png'")
+    $(".box").removeClass("hide")
     }
 };
 
@@ -165,7 +168,7 @@ function initMap() {
       zoom: 13
     });
   
-    var input = document.getElementById("pac-input");
+
   
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo("bounds", map);
@@ -222,7 +225,8 @@ function initMap() {
 
     // event listener to change map to center when prevSearchBtn's are clicked
     historyList.addEventListener("click", function(event) {
-
+      // input.value=event.target.
+      input.value=event.target.innerHTML
       var button = event.target;
       var x = button.getAttribute("lat");
       var y = button.getAttribute("long");
