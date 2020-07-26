@@ -72,6 +72,14 @@
                 </div>
             </div>
         </div>
+        <div>
+            <p class="choice">AND/OR</p>
+        </div>
+         <!--keyword search-->
+         <div class="is-12 column">
+            <input type="text" name="keyword" class="input keyword-input" placeholder="enter a keyword" value=""/>
+            <button id="right-panel" class="button keyword-search col-1">search</button>
+        </div>
 
         <!--MAP-->
         <div style="display: none" class="text">
@@ -94,11 +102,21 @@
         <div class="columns">
             <div class="column newsbox">
                 <h2 id="newsCityTitle" style="border-bottom: solid; margin-top: 10px;"
-                    class="center text subtitle is-2 hide">News
+                    class="center text subtitle is-2 newsTitle hide">News
                 </h2>
             </div>
         </div>
-        <div class="box hide">
+         <!--NO NEWS ARTICLES FOUND-->
+         <div class="box hide noNews">
+            <div class="columns" style="margin-bottom: 20px;">
+                <div class="tile">
+                    <div>
+                        <p>no news articles found</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box hide news0">
             <div class="columns" style="margin-bottom: 20px;">
                 <div class="">
                     <div id="newsCard">
@@ -114,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="box hide">
+        <div class="box hide news1">
             <div class="columns" style="margin-bottom: 20px;">
                 <div class="">
                     <div id="newsCard">
@@ -130,7 +148,7 @@
                 </div>
             </div>
         </div>
-        <div class="box hide">
+        <div class="box hide news2">
             <div class="columns" style="margin-bottom: 20px;">
                 <div class="">
                     <div id="newsCard">
@@ -148,6 +166,23 @@
         </div>
     </main>
 
+  <!-- modal -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Oops!</p>
+                </header>
+                <section class="modal-card-body">
+                    <p class="modal-text"></p>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button" onclick="hideModal()">try again</button>
+                </footer>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
     <!-- Script Links -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
