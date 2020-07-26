@@ -18,5 +18,5 @@ https://adamkeyser45.github.io/newsbythemap/
 ![Screenshot of main page](assets/images/page3.jpg)
 
 ## Contribution
-Melanie Gilman, Jon Prine, Jessica Tillman,  Adam Keyser, and Mallory Korpics
+[Melanie Gilman](https://github.com/melaniegilman), [Jon Prine](https://github.com/jonprine), [Jessica Tillman](https://github.com/jtillson1),  [Adam Keyser](https://github.com/adamkeyser45), and [Mallory Korpics](https://github.com/mallynnk)
 
