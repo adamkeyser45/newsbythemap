@@ -217,9 +217,14 @@ function initMap() {
       var longitude = place.geometry.location.lng();  
 
       getData(exactLoc1, exactLoc2);
-      prevSearches.push(exactLoc1 + "-" + exactLoc2);
-      latLongArray.push(latitude + "," + longitude);
-      previousSearchBtn(exactLoc1, exactLoc2, latitude, longitude);
+
+      // check to see if the location and coordinates are already in the array
+      if (prevSearches.includes(exactLoc1 + "-" + exactLoc2) === false) {
+        prevSearches.push(exactLoc1 + "-" + exactLoc2);
+        latLongArray.push(latitude + "," + longitude);
+        previousSearchBtn(exactLoc1, exactLoc2, latitude, longitude);
+      };
+      
       savePrevSearches();
     });
 
