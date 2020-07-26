@@ -1,14 +1,22 @@
 // global variables
 const now  = moment().format("dddd, MMMM Do, YYYY, h:mm a");
-var modalEl = document.querySelector("modal")
+var modalEl = document.querySelector(".modal")
 var dropdown = document.querySelector('.dropdown');
 var dropDwnOptGrp = document.querySelector("#dropDwnOptGrp");
 var hideEl = document.querySelector(".hide")
+var boxEl0 = document.querySelector(".news0")
+var boxEl1 = document.querySelector(".news1")
+var boxEl2 =document.querySelector(".news2")
+var newsEl = document.querySelector(".noNews")
+var newsTitle = document.querySelector(".newsTitle")
 var dropdownItem = document.querySelectorAll(".dropdown-item");
 var historyList = document.querySelector("#history-list");
 var topicEl = document.querySelector("#topic")
 var choiceSelection = "";
+var keySelection = "";
 var input = document.getElementById("pac-input");
+var keywordEl = document.querySelector(".keyword-input")
+var keywordSearch = document.querySelector(".keyword-search")
 
 //display current day and time at top of page
 $("#currentDay").text(now)
@@ -43,20 +51,45 @@ var topicChoice = function(event) {
   choiceSelection = choice;
 };
 
+// function to configure keyword
+var keywordChoice = function(event) {
+  event.preventDefault();
+  var keywordInput = document.querySelector("input[name='keyword']").value;
+  keySelection = keywordInput
+  var exactLoc1 = input.value.split(",")[0];
+  var exactLoc2 = input.value.split(",")[1];
+  if (!exactLoc1 || !exactLoc2) {
+    modalEl.classList.add("is-active")
+    document.querySelector(".modal-text").innerHTML = "please enter a location in the map before your search"
+  } else {
+    getData(exactLoc1, exactLoc2)
+  }
+  console.log(keywordInput)
+};
+
+//hide modal
+var hideModal = function(event) {
+  modalEl.classList.remove("is-active")
+}
+
+
 // function to fetch news from GNews API
 var getData = function (city, state) {
     // format the url
-    var searchQuery = choiceSelection + "%20" + city + "%20" + state.trim();
-    var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=e5001b8165309418e621b398625f5c9b";
+    var keywordInput = document.querySelector("input[name='keyword']").value;
+    var searchQuery = choiceSelection + keywordInput + "%20" + city + "%20" + state.trim();
+    var apiUrl = "https://gnews.io/api/v3/search?q=" + searchQuery + "&image=required&token=727a88ffb0ce56716bbcef44b445925c";
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             // send the parsed JSON data to displayNewsData() function
             response.json().then(function (data) {
                 displayNewsData(data, city);
+                document.querySelector("input[name='keyword']").value='';
+                keySelection = ""
             });
         } else {
-            hideEl.classList.remove("hide")
+            // hideEl.classList.remove("hide")
             alert("Error: " + response.statusText);
         };
     });
@@ -65,7 +98,24 @@ var getData = function (city, state) {
 // function to display information to page
 var displayNewsData = function (data, city) {
 
-    for (var i = 0; i < 3; i++) {
+    var totalArticles = data.articles?.length || 0
+    console.log(totalArticles)
+    console.log(totalArticles === 0)
+    if (totalArticles === 0) {
+      newsEl.classList.remove("hide")
+    } else {
+      newsEl.classList.add("hide")
+    }
+   
+    boxEl0.classList.add("hide")
+    boxEl1.classList.add("hide")
+    boxEl2.classList.add("hide")
+    newsTitle.classList.add("hide")
+    
+    var articleNumber = totalArticles < 3 ? totalArticles : 3
+    console.log(articleNumber)
+
+    for (var i = 0; i < articleNumber; i++) {
      //set news array and for loop to retrieve data
     
     const nameOfCity = city;
@@ -77,15 +127,16 @@ var displayNewsData = function (data, city) {
     var dataArticleHtml = document.getElementById("title" + i);
     var dataUrlHtml = document.getElementById("url" + i);
     var dataImageHtml = document.getElementById("image" + i);
-
-    hideEl.classList.remove("hide")
+    document.querySelector(".newsTitle").classList.remove("hide")
+    document.querySelector(".news" + i).classList.remove("hide")
+      
     nameOfCityHtml.innerHTML = "News from " + nameOfCity;
     dataArticleHtml.innerHTML = dataArticle;
     dataUrlHtml.setAttribute("href", dataUrl);
     dataUrlHtml.innerHTML = "Click Here to Read More";
     dataImageHtml.setAttribute('src', dataImage);
     dataImageHtml.setAttribute('onerror',"this.src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/news-512.png'")
-    $(".box").removeClass("hide")
+    // $(".box").removeClass("hide")
     }
 };
 
@@ -239,4 +290,5 @@ function initMap() {
 
 historyList.addEventListener("click", previousSeachBtnHandler);
 dropDwnOptGrp.addEventListener("click", topicChoice);
+keywordSearch.addEventListener("click", keywordChoice);
 loadPrevSearches();
